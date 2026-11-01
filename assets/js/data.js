@@ -15,7 +15,7 @@ window.SITE = {
   languages: ["English", "Hindi", "Urdu", "French (learning)"],
 
   links: {
-    email: "jumainah.khan@gmail.com",
+    email: "jumainahkhan@gmail.com",
     github: "https://github.com/jumainahkhan",
     linkedin: "https://linkedin.com/in/jumainah-khan"
   },
