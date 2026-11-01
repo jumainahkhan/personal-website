@@ -9,7 +9,7 @@ window.SITE = {
   about: [
     "I'm a software engineer doing my Master's in Computer Science at the University of Geneva, on the Excellence Master Fellowship.",
     "Before Geneva, I was a full-stack engineer at DISH Network Technologies in Bengaluru. I built Hexbin View, an analytics app that gives Boost Mobile's operations teams a view of 5G signal quality across the US, and it earned me a Spot Award.",
-    "These days I'm into AI tools that do useful, concrete things, and I enter a lot of hackathons. Outside of class I build small apps for my own life: a chore rota for my flat, a habit tracker, and flashcards for my French."
+    "These days I'm into AI tools that do useful, concrete things, and I enter a lot of hackathons. Outside of class I build small apps for my own life, like a chore rota for my flat and flashcards for my French."
   ],
   skills: ["Python", "JavaScript", "TypeScript", "React", "Node.js", "FastAPI", "AWS Lambda", "Supabase", "SQL / SPARQL", "Java", "C / C++", "Dart", "TensorFlow"],
   languages: ["English", "Hindi", "Urdu", "French (learning)"],
@@ -78,10 +78,7 @@ window.SITE = {
       stack: ["JavaScript", "PWA"],
       img: "assets/img/projects/vocabulaire.jpg", alt: "Mon Vocabulaire on a phone: progress ring, level, streak and a Study now button",
       live: "https://jumainahkhan.github.io/french-flashcards/", code: "https://github.com/jumainahkhan/french-flashcards",
-      blurb: "French flashcards with simple spaced repetition and verb conjugation practice, built for my B1 course. Works offline from the home screen." },
-    { name: "Hobby Tracker", tag: "Web app", when: "Sep 2026",
-      stack: ["Next.js", "Postgres", "Web Push"],
-      blurb: "A habit tracker shaped like a small pixel-art room. Each habit is an object you tap, and a little companion reacts to how the day is going." }
+      blurb: "French flashcards with simple spaced repetition and verb conjugation practice, built for my B1 course. Works offline from the home screen." }
   ],
 
   // Smaller things, listed under the personal projects.
