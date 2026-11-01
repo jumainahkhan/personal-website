@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jumainah Khan · Software Engineer</title>
+<meta name="description" content="Jumainah Khan is a software engineer in Geneva, doing an MSc in Computer Science at the University of Geneva. Projects, experience and notes.">
+<meta property="og:title" content="Jumainah Khan · Software Engineer">
+<meta property="og:description" content="Software engineer in Geneva. Projects, experience and notes.">
+<meta property="og:image" content="https://jumainahkhan.github.io/personal-website/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#12081f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+<header class="hero" id="top">
+  <nav class="nav" id="nav" aria-label="Main">
+    <a href="#about">About</a><a href="#journey">Journey</a><a href="#projects">Projects</a><a href="#notes" data-needs-posts hidden>Notes</a><a href="#contact">Contact</a>
+  </nav>
+  <canvas id="galaxy" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <h1 id="name">Jumainah Khan</h1>
+    <p id="tagline"></p>
+    <p class="hint"><span class="hint-desk">move to stir the galaxy · hold space to warp</span><span class="hint-touch">press and hold the sky to warp</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="about" aria-labelledby="about-h">
+    <h2 id="about-h"><small>origin</small>About me</h2>
+    <div class="about">
+      <div id="aboutText"></div>
+      <aside>
+        <h3 class="mini">Building with</h3><ul class="orbit" id="skills"></ul>
+        <h3 class="mini">Speaking</h3><p class="muted" id="langs"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="journey" aria-labelledby="journey-h">
+    <h2 id="journey-h"><small>constellation</small>The journey</h2>
+    <p class="muted lede">Each star is a stop along the way. Hover or tap one to read about it.</p>
+    <div class="constellation">
+      <div class="sky"><svg viewBox="0 0 400 400" id="sky" role="group" aria-label="Career timeline"></svg></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="projects" aria-labelledby="projects-h">
+    <h2 id="projects-h"><small>worlds</small>Projects</h2>
+    <div class="planets" id="planets"></div>
+    <div class="more" id="more"></div>
+  </section>
+
+  <section id="notes" aria-labelledby="notes-h" data-needs-posts hidden>
+    <h2 id="notes-h"><small>transmissions</small>Notes</h2>
+    <div class="posts" id="posts"></div>
+  </section>
+</main>
+
+<footer id="contact">
+  <p class="muted">send a signal</p>
+  <p><a class="mail" id="mail"></a></p>
+  <p class="copyrow"><button class="ghost" id="copy" type="button">Copy email</button></p>
+  <p class="social"><a id="gh">GitHub</a><a id="li">LinkedIn</a></p>
+  <p class="tiny">© <span id="year"></span> Jumainah Khan · made in Geneva</p>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="blog/posts.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

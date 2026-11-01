@@ -1,0 +1,136 @@
+/* Cosmic Swirl: a night sky. The hero galaxy is interactive, the career is a
+   constellation, and projects are worlds. One dark look on purpose. */
+:root {
+  --space: #12081f; --space-2: #1d1033; --lav: #c9b6f2; --glow: #7ef2e0; --rose: #f2a7d8;
+  --ink: #ece6ff; --muted: #a497c4; --line: #34245a;
+  --serif: "Cormorant Garamond", Georgia, serif; --body: Manrope, system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--space); color: var(--ink); font: 300 17px/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--glow); }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--glow); color: var(--space); padding: 8px 14px; border-radius: 8px; z-index: 50; }
+.skip:focus { left: 12px; }
+.muted { color: var(--muted); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+
+/* Hero */
+.hero { position: relative; height: min(88vh, 780px); min-height: 520px; overflow: hidden; touch-action: pan-y; }
+#galaxy { position: absolute; inset: 0; width: 100%; height: 100%; }
+.nav { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px;
+  padding: calc(22px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 22px max(16px, env(safe-area-inset-left)); }
+.nav a { color: var(--muted); text-decoration: none; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
+.nav a:hover { color: var(--glow); }
+.hero-copy { position: absolute; left: 0; right: 0; bottom: 9%; text-align: center; padding-inline: 16px; pointer-events: none; }
+.hero h1 { font: italic 600 clamp(3rem, 10vw, 7.5rem)/.95 var(--serif); margin: 0; padding-bottom: .08em;
+  background: linear-gradient(90deg, var(--lav), var(--glow), var(--rose)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { margin: 14px auto 0; max-width: 32rem; color: var(--muted); }
+.hero .hint { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--glow); }
+.hint-touch { display: none; }
+@media (hover: none) { .hint-desk { display: none; } .hint-touch { display: inline; } }
+
+/* Sections */
+section { padding-block: 72px; scroll-margin-top: 16px; }
+h2 { font: italic 500 3rem/1 var(--serif); margin: 0 0 28px; color: var(--lav); text-wrap: balance; }
+h2 small { display: block; font: 400 12px var(--body); letter-spacing: .25em; text-transform: uppercase; color: var(--glow); margin-bottom: 10px; font-style: normal; }
+.lede { margin: -12px 0 24px; }
+.mini { font: 600 12px var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.about { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; }
+.about p { margin: 0 0 14px; }
+.about aside .mini:not(:first-child) { margin-top: 24px; }
+.orbit { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.orbit li { border: 1px solid var(--line); border-radius: 99px; padding: 4px 12px; font-size: 13px; color: var(--lav); }
+
+/* Journey */
+.constellation { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+.sky { position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; background: radial-gradient(circle at 50% 50%, var(--space-2), transparent 70%); }
+.sky svg { width: 100%; height: 100%; overflow: visible; }
+.star { cursor: pointer; outline: none; }
+.star text { fill: var(--muted); font: 13px var(--body); }
+.star .halo { fill: var(--glow); opacity: .08; transition: opacity .3s; }
+.star .core { fill: var(--ink); transition: fill .3s; }
+.star.on .halo, .star:hover .halo, .star:focus-visible .halo { opacity: .25; }
+.star.on .core { fill: var(--glow); } .star.on text { fill: var(--ink); }
+.detail { min-height: 280px; border-left: 1px solid var(--line); padding-left: 26px; }
+.detail h3 { font: italic 600 2rem/1.1 var(--serif); margin: 0; color: var(--glow); }
+.detail .meta { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+.detail ul { padding-left: 18px; margin: 0; } .detail li { margin-bottom: 6px; }
+
+/* Projects */
+.planets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.planet { background: linear-gradient(160deg, var(--space-2), var(--space)); border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+  display: flex; flex-direction: column; min-width: 0; transition: border-color .3s, transform .3s, box-shadow .3s; }
+.planet:hover { border-color: var(--glow); transform: translateY(-4px); box-shadow: 0 18px 50px rgb(126 242 224 / .1); }
+.planet.feature { grid-column: 1 / -1; flex-direction: row; }
+.planet.feature.flip { flex-direction: row-reverse; }
+.planet.feature .shot { flex: 0 0 58%; aspect-ratio: auto; min-height: 360px; border-bottom: 0; border-right: 1px solid var(--line); }
+.planet.feature.flip .shot { border-right: 0; border-left: 1px solid var(--line); }
+.planet.feature .pbody { justify-content: center; padding: 34px; }
+.planet.feature h3 { font-size: 2.5rem; }
+.shot { appearance: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; display: block; width: 100%; position: relative; aspect-ratio: 16 / 10;
+  overflow: hidden; border-bottom: 1px solid var(--line); cursor: zoom-in; background: #0b0616; }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; transition: transform .7s ease; }
+.planet:hover .shot img { transform: scale(1.04); }
+.shot::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 60%, rgb(18 8 31 / .7)), linear-gradient(120deg, rgb(201 182 242 / .1), transparent 40%); }
+.shot .zoom { position: absolute; right: 12px; bottom: 12px; z-index: 1; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink);
+  background: rgb(18 8 31 / .75); border: 1px solid var(--line); padding: 4px 10px; border-radius: 99px; opacity: 0; transition: opacity .3s; }
+.planet:hover .zoom, .shot:focus-visible .zoom { opacity: 1; }
+.shot.empty { cursor: default; display: grid; place-items: center;
+  background: radial-gradient(circle at 30% 35%, color-mix(in srgb, var(--c) 45%, transparent), transparent 45%), radial-gradient(circle at 75% 70%, rgb(242 167 216 / .22), transparent 40%), #0b0616; }
+.shot.empty b { font: italic 600 5rem/1 var(--serif); color: var(--ink); opacity: .9; text-shadow: 0 0 30px var(--c); position: relative; z-index: 1; }
+.shot.empty i { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; }
+.pbody { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.planet h3 { font: italic 600 1.8rem/1.1 var(--serif); margin: 0; }
+.planet p { margin: 0; color: var(--muted); font-size: 15px; }
+.planet small { color: var(--glow); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 0; padding: 0; list-style: none; }
+.stack li { font-size: 12px; color: var(--lav); border: 1px solid var(--line); border-radius: 99px; padding: 1px 9px; }
+.plinks { display: flex; gap: 18px; margin-top: auto; padding-top: 10px; }
+.plinks a { font-size: 14px; text-decoration: none; } .plinks a:hover { text-decoration: underline; }
+.more { margin-top: 36px; border-top: 1px solid var(--line); }
+.more h3 { margin: 24px 0 8px; }
+.more ul { list-style: none; padding: 0; margin: 0; }
+.more li { display: grid; grid-template-columns: 220px 1fr auto; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.more li b { font: italic 600 1.3rem var(--serif); } .more li span { color: var(--muted); font-size: 15px; } .more li em { font-style: normal; font-size: 13px; color: var(--muted); }
+.more .gh { display: inline-block; margin-top: 18px; text-decoration: none; }
+
+/* Notes */
+.posts a { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+.posts a b { font: italic 500 1.6rem/1.2 var(--serif); display: block; } .posts a p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+.posts a:hover b { color: var(--glow); } .posts time { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+/* Footer */
+footer { text-align: center; padding: 80px max(16px, env(safe-area-inset-right)) calc(56px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); border-top: 1px solid var(--line);
+  background: radial-gradient(ellipse at 50% 120%, rgb(126 242 224 / .1), transparent 60%); }
+footer p { margin: 0 0 10px; }
+.mail { font: italic 500 clamp(1.6rem, 5vw, 2.8rem) var(--serif); text-decoration: none; word-break: break-word; }
+.mail:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+.ghost { background: none; border: 1px solid var(--line); color: var(--lav); font: 400 13px var(--body); letter-spacing: .1em; text-transform: uppercase; padding: 8px 16px; border-radius: 99px; cursor: pointer; }
+.ghost:hover { border-color: var(--glow); color: var(--glow); }
+.social { display: flex; justify-content: center; gap: 24px; margin-top: 18px !important; }
+.social a { color: var(--lav); }
+.tiny { font-size: 12px; color: var(--muted); margin-top: 28px !important; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; align-content: center; gap: 12px; background: rgb(8 4 14 / .9); cursor: zoom-out;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left)); }
+.lightbox img { max-width: min(1200px, 100%); max-height: 84vh; border-radius: 12px; box-shadow: 0 20px 60px rgb(0 0 0 / .5); }
+.lightbox p { margin: 0; color: var(--muted); font-size: 14px; text-align: center; max-width: 60ch; }
+
+@media (max-width: 760px) {
+  section { padding-block: 56px; }
+  h2 { font-size: 2.4rem; }
+  .about, .constellation { grid-template-columns: 1fr; gap: 28px; }
+  .detail { border-left: 0; padding-left: 0; min-height: 0; }
+  .planets { grid-template-columns: 1fr; }
+  .planet.feature, .planet.feature.flip { flex-direction: column; }
+  .planet.feature .shot { flex: none; aspect-ratio: 16 / 10; min-height: 0; border: 0; border-bottom: 1px solid var(--line); }
+  .planet.feature .pbody { padding: 22px 24px 24px; } .planet.feature h3 { font-size: 2rem; }
+  .more li { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
