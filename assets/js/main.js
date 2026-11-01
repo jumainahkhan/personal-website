@@ -73,7 +73,8 @@
   const shot = (p) => {
     if (p.img) return h("button", { class: "shot", type: "button", "aria-label": "Enlarge screenshot of " + p.name, onclick: () => openShot(p.img, p.alt) },
       h("img", { src: p.img, alt: p.alt, loading: "lazy", decoding: "async" }), h("span", { class: "zoom" }, "enlarge"));
-    const el = h("div", { class: "shot empty", "aria-hidden": "true" }, h("b", {}, initials(p.name)));
+    const label = p.challenge || p.cover;
+    const el = h("div", { class: "shot empty" + (label ? " named" : ""), "aria-hidden": "true" }, h("b", {}, label || initials(p.name)));
     for (let k = 0; k < 40; k++) el.append(h("i", { style: `left:${(k * 37) % 100}%;top:${(k * 53) % 100}%;opacity:${.2 + (k % 5) / 6}` }));
     return el;
   };
@@ -83,13 +84,21 @@
     if (p.code) a.push(h("a", { href: p.code, target: "_blank", rel: "noopener" }, "Code ↗"));
     return a.length ? h("div", { class: "plinks" }, a) : null;
   };
-  let flip = false;
-  S.projects.forEach((p, i) => {
-    const cls = "planet" + (p.feature ? " feature" + ((flip = !flip) ? "" : " flip") : "");
-    $("#planets").append(h("article", { class: cls, style: `--c:${hues[i % hues.length]}` }, shot(p),
-      h("div", { class: "pbody" }, h("small", {}, `${p.tag} · ${p.when}`), h("h3", {}, p.name), h("p", {}, p.blurb),
-        h("ul", { class: "stack", "aria-label": "Built with" }, p.stack.map((s) => h("li", {}, s))), links(p))));
-  });
+  const calendar = () => { const s = document.createElementNS(NS, "svg"); s.setAttribute("viewBox", "0 0 16 16"); s.setAttribute("aria-hidden", "true"); s.setAttribute("class", "cal");
+    s.innerHTML = '<rect x="2" y="3" width="12" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M2 7h12M5 1.5v3M11 1.5v3" stroke="currentColor" stroke-width="1.3"/>'; return s; };
+  const card = (p, i, flip) => {
+    const cls = "planet" + (p.feature ? " feature" + (flip ? " flip" : "") : "");
+    const top = shot(p);
+    if (p.award) top.append(h("span", { class: "award" }, "✦ " + p.award));
+    const meta = p.event ? h("small", { class: "event" }, calendar(), h("span", {}, p.event), h("span", { class: "when" }, " · " + p.when))
+                         : h("small", {}, `${p.tag} · ${p.when}`);
+    return h("article", { class: cls, style: `--c:${hues[i % hues.length]}` }, top,
+      h("div", { class: "pbody" }, meta, h("h3", {}, p.name), p.challenge ? h("p", { class: "challenge" }, p.challenge + " challenge") : null,
+        h("p", {}, p.blurb), h("ul", { class: "stack", "aria-label": "Built with" }, p.stack.map((s) => h("li", {}, s))), links(p)));
+  };
+  S.hackathons.forEach((p, i) => $("#hacks").append(card(p, i, false)));
+  S.projects.forEach((p, i) => $("#planets").append(card(p, i + 3, true)));
+  $("#planets").classList.toggle("thirds", S.projects.filter((p) => !p.feature).length % 3 === 0);
   if (S.more?.length) {
     $("#more").append(h("h3", { class: "mini" }, "Also built"),
       h("ul", {}, S.more.map((m) => h("li", {}, h("b", {}, m.name), h("span", {}, m.blurb), h("em", {}, m.when)))),

@@ -99,6 +99,17 @@ h2 small { display: block; font: 400 12px var(--body); letter-spacing: .25em; te
 .more li b { font: italic 600 1.3rem var(--serif); } .more li span { color: var(--muted); font-size: 15px; } .more li em { font-style: normal; font-size: 13px; color: var(--muted); }
 .more .gh { display: inline-block; margin-top: 18px; text-decoration: none; }
 
+.shot.empty.named b { font-size: clamp(2.4rem, 5vw, 3.6rem); text-align: center; padding-inline: 16px; line-height: 1.05; }
+.award { position: absolute; left: 14px; top: 14px; z-index: 2; background: var(--glow); color: var(--space); font: 600 12px var(--body); letter-spacing: .04em;
+  padding: 5px 12px; border-radius: 99px; box-shadow: 0 4px 20px rgb(126 242 224 / .35); }
+.event { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.event .cal { width: 14px; height: 14px; flex: none; }
+.event .when { color: var(--muted); }
+.planet p.challenge { color: var(--lav); font-size: 14px; margin-top: -4px; }
+.planets.thirds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.planets.thirds .planet:not(.feature) h3 { font-size: 1.6rem; }
+#planets { margin-top: 0; }
+
 /* Notes */
 .posts a { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
 .posts a b { font: italic 500 1.6rem/1.2 var(--serif); display: block; } .posts a p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
@@ -122,12 +133,13 @@ footer p { margin: 0 0 10px; }
 .lightbox img { max-width: min(1200px, 100%); max-height: 84vh; border-radius: 12px; box-shadow: 0 20px 60px rgb(0 0 0 / .5); }
 .lightbox p { margin: 0; color: var(--muted); font-size: 14px; text-align: center; max-width: 60ch; }
 
+@media (max-width: 1000px) { .planets.thirds { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) {
   section { padding-block: 56px; }
   h2 { font-size: 2.4rem; }
   .about, .constellation { grid-template-columns: 1fr; gap: 28px; }
   .detail { border-left: 0; padding-left: 0; min-height: 0; }
-  .planets { grid-template-columns: 1fr; }
+  .planets, .planets.thirds { grid-template-columns: 1fr; }
   .planet.feature, .planet.feature.flip { flex-direction: column; }
   .planet.feature .shot { flex: none; aspect-ratio: 16 / 10; min-height: 0; border: 0; border-bottom: 1px solid var(--line); }
   .planet.feature .pbody { padding: 22px 24px 24px; } .planet.feature h3 { font-size: 2rem; }

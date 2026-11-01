@@ -35,48 +35,57 @@ window.SITE = {
       points: ["Excellence Master Fellowship, Faculty of Sciences.", "Before this: BE (Honours) in Computer Science and Engineering, New Horizon College of Engineering, Bengaluru (2020 – 2024)."] }
   ],
 
-  // feature: true → shown large at the top. img is optional.
-  projects: [
-    { name: "Ctrl+Free", tag: "Hackathon · Honourable Mention", when: "Oct 2026", feature: true,
+  // ── Hackathons ────────────────────────────────────────────
+  // feature: true → shown large. img is optional; without one, the card
+  // shows the challenge partner's name. award adds a badge.
+  hackathons: [
+    { name: "Ctrl+Free", event: "Sprintd Hackathon, Zürich", when: "Oct 2026", challenge: "Equans Switzerland",
+      award: "Honourable Mention", feature: true,
       stack: ["Python", "FastAPI", "React", "GPT-5.4"],
       img: "assets/img/projects/ctrlfree.jpg", alt: "Ctrl+Free reviewing one tender line: the tender PDF on the left, the computed price on the right",
       code: "https://github.com/beSaif/ctrl-free",
-      blurb: "An AI assistant that turns a 202-page construction tender into a first price estimate for Equans Switzerland. Code shortlists catalogue products, GPT-5.4 picks the match, and deterministic pricing reproduced all 22 of Equans' verified reference lines exactly." },
-    { name: "Coloc", tag: "Side project", when: "Nov 2026", feature: true,
+      blurb: "Turns a 202-page construction tender into a first price estimate. Code shortlists catalogue products, GPT-5.4 picks the match, and deterministic pricing reproduced all 22 of Equans' verified reference lines exactly." },
+    { name: "Viva", event: "{Tech: Europe} Agentic AI Hack, Zürich", when: "Oct 2026", cover: "Viva",
+      stack: ["Gemini", "FastAPI", "React", "Voice AI"],
+      code: "https://github.com/jumainahkhan/viva",
+      blurb: "Sit your oral exam out loud before the real one. Three AI professor agents read your lecture slides, question you by voice, agree on a grade on the Swiss 1–6 scale, and hand you a revision plan." },
+    { name: "ICRC Negotiation Simulator", event: "Geneva Hackathon", when: "Sep 2026", challenge: "ICRC",
+      stack: ["LLM agents", "Python"],
+      blurb: "Trainees practise checkpoint and prison negotiations against a gradable AI avatar, with trainer-defined goals, live scenario injection and feedback after each session. Runs offline on open-source models." },
+    { name: "Visual Compliance Inspector", event: "Swiss AI Weeks · Agentic AI Hackathon", when: "Sep 2026", challenge: "HPE & NVIDIA",
+      stack: ["NVIDIA Cosmos", "Video AI", "Python"],
+      code: "https://github.com/Swiss-ai-Weeks/compliance-inspector",
+      blurb: "Watches factory footage and checks it against the written procedure: which steps were done, which were missed, and when." },
+    { name: "tpgFlex Reallocation", event: "Hackademia, University of Geneva", when: "Apr 2026", challenge: "TPG",
+      stack: ["Python", "Streamlit"],
+      img: "assets/img/projects/tpgflex.jpg", alt: "Pitch slide comparing three reallocation strategies: idle only, in-service rerouting and hybrid scoring",
+      blurb: "When an on-demand TPG vehicle breaks down, who picks up its passengers? We compared reallocation strategies on three months of real Geneva transit data." }
+  ],
+
+  // ── Personal projects ─────────────────────────────────────
+  projects: [
+    { name: "Coloc", tag: "Web app", when: "Nov 2026", feature: true,
       stack: ["React", "TypeScript", "Supabase", "PWA"],
       img: "assets/img/projects/coloc.jpg", alt: "Three phone screens from Coloc: the Geneva campus, the flat as a clay dollhouse, and the month's chores with the kitchen done",
       live: "https://coloc-flat.vercel.app",
       blurb: "Chores, shared fairly. Every month Coloc deals out the cleaning so flatmates each do their share, and shows the flat as an isometric clay dollhouse that gathers dust bunnies until each room is done. No account needed, in French and English." },
-    { name: "Viva", tag: "Hackathon · {Tech: Europe} Zürich", when: "Oct 2026",
-      stack: ["Gemini", "FastAPI", "React", "Voice AI"],
-      code: "https://github.com/jumainahkhan/viva",
-      blurb: "Sit your oral exam out loud before the real one. Three AI professor agents read your lecture slides, question you by voice, agree on a grade on the Swiss 1–6 scale, and hand you a revision plan." },
-    { name: "tpgFlex Reallocation", tag: "Hackathon · Hackademia", when: "Apr 2026",
-      stack: ["Python", "Streamlit"],
-      img: "assets/img/projects/tpgflex.jpg", alt: "Pitch slide comparing three reallocation strategies: idle only, in-service rerouting and hybrid scoring",
-      blurb: "When an on-demand TPG vehicle breaks down, who picks up its passengers? We compared three reallocation strategies on three months of real Geneva transit data." },
-    { name: "Board Grab", tag: "Side project", when: "Nov 2026",
+    { name: "Board Grab", tag: "Web tool", when: "Nov 2026",
       stack: ["FastAPI", "gallery-dl"],
       img: "assets/img/projects/boardgrab.jpg", alt: "Board Grab showing a Pinterest board's pins in a preview grid with a Download all button",
       live: "https://board-grab.onrender.com", code: "https://github.com/jumainahkhan/board-grab",
       blurb: "Paste a Pinterest board link and download every image as one ZIP. No extension, nothing stored on the server." },
-    { name: "Mon Vocabulaire", tag: "Side project", when: "Nov 2026",
+    { name: "Mon Vocabulaire", tag: "Web app", when: "Nov 2026",
       stack: ["JavaScript", "PWA"],
       img: "assets/img/projects/vocabulaire.jpg", alt: "Mon Vocabulaire on a phone: progress ring, level, streak and a Study now button",
       live: "https://jumainahkhan.github.io/french-flashcards/", code: "https://github.com/jumainahkhan/french-flashcards",
       blurb: "French flashcards with simple spaced repetition and verb conjugation practice, built for my B1 course. Works offline from the home screen." },
-    { name: "Visual Compliance Inspector", tag: "Hackathon · Swiss AI Weeks", when: "Sep 2026",
-      stack: ["NVIDIA Cosmos", "Video AI", "Python"],
-      code: "https://github.com/Swiss-ai-Weeks/compliance-inspector",
-      blurb: "Watches factory footage and checks it against the written procedure: which steps were done, which were missed, and when." },
-    { name: "Hobby Tracker", tag: "Side project", when: "Sep 2026",
+    { name: "Hobby Tracker", tag: "Web app", when: "Sep 2026",
       stack: ["Next.js", "Postgres", "Web Push"],
       blurb: "A habit tracker shaped like a small pixel-art room. Each habit is an object you tap, and a little companion reacts to how the day is going." }
   ],
 
-  // Smaller projects, listed under the cards.
+  // Smaller things, listed under the personal projects.
   more: [
-    { name: "ICRC Negotiation Simulator", when: "Sep 2026", blurb: "Practise checkpoint negotiations against a gradable AI avatar (Geneva hackathon)." },
-    { name: "NL ↔ SPARQL", when: "May 2026", blurb: "Translates plain English into SPARQL queries over DBpedia. I led development." }
+    { name: "NL ↔ SPARQL", when: "May 2026", blurb: "University project: translates plain English into SPARQL queries over DBpedia. I led development." }
   ]
 };
