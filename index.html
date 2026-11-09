@@ -4,79 +4,97 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Jumainah Khan · Software Engineer</title>
-<meta name="description" content="Jumainah Khan is a software engineer in Geneva, doing an MSc in Computer Science at the University of Geneva. Projects, experience and notes.">
+<meta name="description" content="Jumainah Khan is a software engineer in Geneva, doing an MSc in Computer Science at the University of Geneva. Hackathon projects, side projects and experience.">
 <meta property="og:title" content="Jumainah Khan · Software Engineer">
-<meta property="og:description" content="Software engineer in Geneva. Projects, experience and notes.">
+<meta property="og:description" content="Software engineer in Geneva. Hackathon projects, side projects and experience.">
 <meta property="og:image" content="https://jumainah.com/assets/img/og.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://jumainah.com/">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://jumainah.com/">
-<meta name="theme-color" content="#12081f">
+<meta name="theme-color" content="#140f1f">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
-<header class="hero" id="top">
-  <nav class="nav" id="nav" aria-label="Main">
-    <a href="#about">About</a><a href="#journey">Journey</a><a href="#hackathons">Hackathons</a><a href="#projects">Projects</a><a href="#notes" data-needs-posts hidden>Notes</a><a href="#contact">Contact</a>
-  </nav>
-  <canvas id="galaxy" aria-hidden="true"></canvas>
-  <div class="hero-copy">
-    <h1 id="name">Jumainah Khan</h1>
-    <p id="tagline"></p>
-    <p class="hint"><span class="hint-desk">move to stir the galaxy · hold space to warp</span><span class="hint-touch">press and hold the sky to warp</span></p>
+
+<header class="topbar">
+  <div class="wrap bar-inner">
+    <a class="brand" href="#top">jumainah<span>.com</span></a>
+    <nav aria-label="Main">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#hackathons">Hackathons</a><a href="#projects">Projects</a><a href="#writing" data-needs-posts hidden>Writing</a><a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
-  <section id="about" aria-labelledby="about-h">
-    <h2 id="about-h"><small>origin</small>About me</h2>
+<main id="top">
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="hello">Hi, I'm</p>
+      <h1>Jumainah Khan.</h1>
+      <p class="intro" id="intro"></p>
+      <ul class="facts">
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="8" cy="6.5" r="1.8" fill="currentColor"/></svg><span id="where"></span></li>
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 6l7-3.5L15 6 8 9.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 7.6V11c1.2 1.2 6.8 1.2 8 0V7.6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span id="now"></span></li>
+      </ul>
+      <div class="cta" id="cta"></div>
+    </div>
+    <figure class="photo">
+      <div class="frame"><img id="photo" alt="Jumainah Khan" width="420" height="520"></div>
+      <figcaption id="caption"></figcaption>
+    </figure>
+  </section>
+
+  <section id="about" class="wrap block">
+    <h2>About</h2>
     <div class="about">
-      <div id="aboutText"></div>
+      <div class="prose" id="aboutText"></div>
       <aside>
-        <h3 class="mini">Building with</h3><ul class="orbit" id="skills"></ul>
-        <h3 class="mini">Speaking</h3><p class="muted" id="langs"></p>
+        <h3>Things I build with</h3>
+        <ul class="pills" id="skills"></ul>
+        <h3>Languages I speak</h3>
+        <p id="langs"></p>
       </aside>
     </div>
   </section>
 
-  <section id="journey" aria-labelledby="journey-h">
-    <h2 id="journey-h"><small>constellation</small>The journey</h2>
-    <p class="muted lede">Each star is a stop along the way. Hover or tap one to read about it.</p>
-    <div class="constellation">
-      <div class="sky"><svg viewBox="0 0 400 400" id="sky" role="group" aria-label="Career timeline"></svg></div>
-      <div class="detail" id="detail" aria-live="polite"></div>
-    </div>
+  <section id="experience" class="wrap block">
+    <h2>Experience</h2>
+    <ol class="timeline" id="jobs"></ol>
   </section>
 
-  <section id="hackathons" aria-labelledby="hack-h">
-    <h2 id="hack-h"><small>supernovas</small>Hackathons</h2>
-    <p class="muted lede">Built in a weekend, on challenges set by partner organisations.</p>
-    <div class="planets" id="hacks"></div>
+  <section id="hackathons" class="wrap block">
+    <div class="head"><h2>Hackathons</h2><p>Weekend builds on challenges set by real organisations, usually with my team, Ctrl+Free.</p></div>
+    <div class="cards" id="hacks"></div>
   </section>
 
-  <section id="projects" aria-labelledby="projects-h">
-    <h2 id="projects-h"><small>worlds</small>Personal projects</h2>
-    <p class="muted lede">Small apps I build for my own everyday life.</p>
-    <div class="planets" id="planets"></div>
-    <div class="more" id="more"></div>
+  <section id="projects" class="wrap block">
+    <div class="head"><h2>Side projects</h2><p>Small apps I made because I wanted them to exist.</p></div>
+    <div class="cards" id="projs"></div>
+    <h3 class="sub-h">Earlier &amp; smaller</h3>
+    <ul class="earlier" id="earlier"></ul>
   </section>
 
-  <section id="notes" aria-labelledby="notes-h" data-needs-posts hidden>
-    <h2 id="notes-h"><small>transmissions</small>Notes</h2>
+  <section id="writing" class="wrap block" data-needs-posts hidden>
+    <h2>Writing</h2>
     <div class="posts" id="posts"></div>
   </section>
 </main>
 
 <footer id="contact">
-  <p class="muted">send a signal</p>
-  <p><a class="mail" id="mail"></a></p>
-  <p class="copyrow"><button class="ghost" id="copy" type="button">Copy email</button></p>
-  <p class="social"><a id="gh">GitHub</a><a id="li">LinkedIn</a></p>
-  <p class="tiny">© <span id="year"></span> Jumainah Khan · made in Geneva</p>
+  <div class="wrap foot">
+    <div>
+      <h2>Say hi</h2>
+      <p class="note">I'm always happy to talk about hackathon ideas, AI tools, or anything you saw here.</p>
+    </div>
+    <div class="reach">
+      <a class="mail" id="mail"></a>
+      <div class="cta" id="cta2"></div>
+    </div>
+  </div>
+  <p class="wrap tiny">© <span id="year"></span> Jumainah Khan · Geneva</p>
 </footer>
 
 <script src="assets/js/data.js"></script>
